@@ -279,48 +279,7 @@ p {
 
     .container {
         width: 100%;
-        padding: 10px;
-        box-sizing: border-box;
-        margin: 0 auto;
-        height: auto;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .sib-form, .sib-container--large.sib-container--vertical {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-    }
-
-    .menu button {
-        width: 100%;
-        margin: 5px 0;
-    }
-}
-
-/* Ajustes para dispositivos móviles */
-@media (max-width: 600px) {
-    body {
-        margin: 0;
-        padding: 0;
-        height: 100vh;
-        overflow-y: auto;
-    }
-
-    .container {
-        width: 100%;
-        padding: 10px;
+        padding: 10px; /* Añade 5px de padding */
         box-sizing: border-box;
         margin: 0 auto;
         height: auto;
@@ -361,12 +320,9 @@ p {
     .image img {
         width: 100%;
         height: auto; /* Ajusta la altura automáticamente */
-        max-height: 260px; /* Aumenta la altura máxima para pantallas más grandes */
+        max-height: 300px; /* Aumenta la altura máxima para pantallas más grandes */
     }
 }
-
-
-
 
     </style>
 </head>
@@ -392,7 +348,7 @@ p {
 
         <!-- Sección de suscripción -->
         <div id="subscribe" class="section">
-            <h2>Lista de espera</h2>
+            <h2>Lista de lanzamiento</h2>
             <p>Inscríbete y te avisaremos cuando la app esté disponible.</p>
             <!-- Begin Brevo Form -->
             <div class="sib-form" style="text-align: center; background-color: #ffffff;">
@@ -538,7 +494,7 @@ p {
                                 </div>
                             </div>
                             <div style="padding: 2px 0;">
-                                <div class="g-recaptcha-v3" data-sitekey="6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw" style="display: none"></div>
+                                <div class="g-recaptcha-v3" data-sitekey="6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw" style="display: none" id="recaptcha"></div>
                             </div>
                             <div style="padding: 8px 0;">
                                 <div class="sib-form-block" id="sib-form-block" style="text-align: center">
@@ -564,7 +520,7 @@ p {
         <!-- Sección de donación -->
         <div id="donate" class="section">
             <h2>Haz Gurwi posible</h2>
-            <p>Tus aportes son esenciales para lograr el desarrollo de la aplicación que pretende que la transición de la vida juvenil a la adulta sea menos dolorosa, que los colombianos tengan más control y consciencia sobre los asuntos diarios y que seamos un país educado que le apuesta al desarrollo.</p>
+            <p>Tus aportes son esenciales para lograr el desarrollo de la aplicación que pretende que la transición de la vida juvenil a la adulta sea menos dolorosa, que los colombianos tengan más control y consciencia sobre los asuntos diarios y que seamos un país educado que comienza a apostar por su desarrollo.</p>
             <div class="goal"><i class="fas fa-bullseye"></i>Objetivo: $15,000,000 COP</div>
             <div class="amount"><i class="fas fa-piggy-bank"></i>Recaudado: $2,000 COP</div>
             <p>0 personas han donado</p>
@@ -589,10 +545,16 @@ p {
                 if (sectionId === 'donate') {
                     document.querySelector('#donate .image img').src = imagePath;
                 }
+                if (sectionId === 'subscribe') {
+                    document.getElementById('recaptcha').style.display = 'block';
+                } else {
+                    document.getElementById('recaptcha').style.display = 'none';
+                }
             } else {
                 document.querySelector('.initial-content').classList.remove('hidden');
                 document.querySelector('.back-button').style.display = 'none';
                 document.getElementById('section-image').src = './presentacion.jpg';
+                document.getElementById('recaptcha').style.display = 'none';
             }
         }
     </script>
