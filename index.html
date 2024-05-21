@@ -3,234 +3,244 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Gurwi - Inscripción y Donaciones</title>
+    <title>Gurwi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
+/* Estilos generales y reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
 
-        .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            padding: 20px;
-            position: relative;
-        }
+/* Contenedor principal */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Mantiene el ancho máximo de 450px */
+    padding: 40px; /* Aumenta el padding para ocupar más espacio */
+    position: relative;
+    text-align: center;
+    margin: 40px auto; /* Centra el contenedor y añade margen vertical */
+}
 
-        .back-button {
-            position: absolute;
-            top: 20px; /* Aumentar el espacio entre la flecha y el contenido */
-            left: 20px; /* Aumentar el espacio entre la flecha y el contenido */
-            cursor: pointer;
-            color: #ffc107;
-            font-size: 18px;
-            display: none;
-        }
+/* Botón de retroceso */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    color: #ffc107;
+    font-size: 18px;
+    display: none;
+}
 
-        .image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-            padding-top: 20px; /* Agregar espacio superior para que no se superponga */
-        }
+/* Imagen de la sección */
+.image {
+    margin-bottom: 20px;
+}
 
-        .image img {
-            width: 100%;
-            max-height: 200px;
-            border-radius: 10px;
-            object-fit: contain;
-        }
+.image img {
+    width: 100%;
+    max-height: 200px;
+    border-radius: 10px;
+    object-fit: contain;
+}
 
-        h2 {
-            font-size: 26px;
-            color: #333333;
-            margin-top: 35px; /* Espacio aumentado entre la flecha y el título */
-            margin-bottom: 15px;
-            text-align: center;
-        }
+/* Contenedor de la imagen */
+.image-container {
+    width: 100%;
+    max-width: 450px; /* El mismo ancho que el contenedor principal */
+    height: auto;
+    margin: 0 auto 20px auto; /* Centrado horizontalmente con margen inferior */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        p {
-            font-size: 16px;
-            color: #666666;
-            margin: 10px 0;
-            text-align: justify;
-        }
+.image-container img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Opción de bordes redondeados */
+}
 
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            margin: 20px 0;
-        }
+/* Encabezados y párrafos */
+h2 {
+    font-size: 32px; /* Aumenta el tamaño de la fuente del título */
+    color: #333333;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    text-align: left; /* Alinea el título a la izquierda */
+}
 
-        .menu button {
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 0;
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-            flex: 1;
-        }
+p {
+    font-size: 18px; /* Aumenta el tamaño de la fuente de los párrafos */
+    color: #666666;
+    margin: 20px 0; /* Aumenta el margen vertical para más espacio */
+    text-align: justify; /* Justifica el texto de los párrafos */
+}
 
-        .menu button:first-child {
-            background-color: #ffc107;
-            color: #ffffff;
-            border-radius: 5px 0 0 5px;
-            margin-right: 5px;
-        }
+/* Menú de botones */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0; /* Aumenta el margen para más espacio */
+}
 
-        .menu button:last-child {
-            background-color: #ffffff;
-            color: #ffc107;
-            border: 2px solid #ffc107;
-            border-radius: 0 5px 5px 0;
-            margin-left: 5px;
-        }
+.menu button {
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Aumenta el tamaño de la fuente de los botones */
+    padding: 15px 0; /* Aumenta el padding de los botones */
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    flex: 1;
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 5px;
+}
 
-        .menu button:hover {
-            background-color: #e0a800;
-            color: #ffffff;
-        }
+.menu button:first-child {
+    background-color: #ffc107;
+    color: #ffffff;
+}
 
-        .goal, .amount {
-            font-size: 18px;
-            color: #333333;
-            font-weight: bold;
-            text-align: left;
-            display: flex;
-            align-items: center;
-        }
+.menu button:last-child {
+    background-color: #ffffff;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+}
 
-        .goal i, .amount i {
-            color: #ffc107;
-            margin-right: 10px;
-        }
+.menu button:hover {
+    background-color: #e0a800;
+    color: #ffffff;
+}
 
-        .progress-container {
-            background-color: #e0e0e0;
-            border-radius: 25px;
-            height: 20px;
-            margin: 20px 0;
-            width: 100%;
-            overflow: hidden;
-        }
+/* Objetivo y cantidad recaudada */
+.goal, .amount {
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
 
-        .progress-bar {
-            background-color: #ffc107;
-            border-radius: 25px;
-            height: 100%;
-            width: 1%; /* Indica que se ha recaudado un 25% del objetivo */
-        }
+.goal i, .amount i {
+    color: #ffc107;
+    margin-right: 10px;
+}
 
-        .donate-button, .submit-button {
-            background-color: #ffc107;
-            border: none;
-            border-radius: 25px;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
+/* Barra de progreso */
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    height: 20px;
+    margin: 20px 0;
+    width: 100%;
+    overflow: hidden;
+}
 
-        .donate-button:hover, .submit-button:hover {
-            background-color: #e0a800;
-        }
+.progress-bar {
+    background-color: #ffc107;
+    border-radius: 25px;
+    height: 100%;
+    width: 1%; /* Indica que se ha recaudado un 25% del objetivo */
+}
 
-        .form-input {
-            margin: 10px 0;
-            width: 100%;
-        }
+/* Botón de donar y enviar */
+.donate-button, .submit-button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    width: 100%;
+    transition: background-color 0.3s;
+}
 
-        .form-input input, .form-input select {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            width: calc(100% - 22px);
-            font-size: 16px;
-            display: block;
-            margin: auto;
-        }
+.donate-button:hover, .submit-button:hover {
+    background-color: #e0a800;
+}
 
-        .form-input input[type="checkbox"] {
-            width: auto;
-            display: inline-block;
-        }
+/* Estilos del formulario */
+.form-input {
+    margin: 10px 0;
+    width: 100%;
+    padding: 0; /* Elimina el padding */
+}
 
-        .form-input label {
-            display: flex;
-            align-items: center;
-        }
+.form-input input, .form-input select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    font-size: 16px;
+    display: block;
+    margin: 0 auto; /* Elimina el margen */
+}
 
-        .container .section {
-            display: none;
-        }
+.form-input input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+}
 
-        .container .section.active {
-            display: block;
-        }
+.form-input label {
+    display: flex;
+    align-items: center;
+    margin: 0; /* Elimina el margen */
+    padding: 0; /* Elimina el padding */
+}
 
-        .initial-content {
-            display: block;
-        }
+/* Ocultar secciones por defecto */
+.container .section {
+    display: none;
+}
 
-        .initial-content.hidden {
-            display: none;
-        }
+.container .section.active {
+    display: block;
+}
 
-        #sib-container input:-ms-input-placeholder {
-            text-align: left;
-            font-family: "Helvetica", sans-serif;
-            color: #c0ccda;
-        }
+.initial-content {
+    display: block;
+}
 
-        #sib-container input::placeholder {
-            text-align: left;
-            font-family: "Helvetica", sans-serif;
-            color: #c0ccda;
-        }
+.initial-content.hidden {
+    display: none;
+}
 
-        #sib-container textarea::placeholder {
-            text-align: left;
-            font-family: "Helvetica", sans-serif;
-            color: #c0ccda;
-        }
+/* Estilos del formulario de Brevo */
+#sib-container input:-ms-input-placeholder, #sib-container input::placeholder, #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+}
 
-        #sib-container a {
-            text-decoration: underline;
-            color: #2BB2FC;
-        }
+#sib-container a {
+    text-decoration: underline;
+    color: #2BB2FC;
+}
 
-
-        /* Añadir este estilo para eliminar los bordes de los elementos de formulario */
-.sib-input input, 
-.sib-input select, 
-.sib-input textarea {
+/* Estilos adicionales del formulario */
+.sib-input input, .sib-input select, .sib-input textarea {
     border: none !important;
     box-shadow: none !important;
 }
 
-/* Añadir este estilo para ajustar el borde del contenedor principal del formulario */
 .sib-container--large.sib-container--vertical {
     border: none !important;
 }
 
-        
-/* Ajusta los estilos para que el formulario ocupe todo el ancho */
 .sib-form {
     margin: 0 !important;
     padding: 0 !important;
@@ -244,8 +254,20 @@
 }
 
 
+#sib-form-block {
+    padding: 0;
+    word-wrap: break-word;
+    outline: none;
+}
 
-        
+
+.sib-form-block {
+    padding: 0;
+    word-wrap: break-word;
+    outline: none;
+}
+
+
 /* Ajustes para dispositivos móviles */
 @media (max-width: 600px) {
     body {
@@ -261,7 +283,7 @@
         box-sizing: border-box;
         margin: 0 auto;
         height: auto;
-        min-height: 100vh; /* Ocupa al menos el 100% de la altura de la vista */
+        min-height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -278,6 +300,48 @@
         display: flex;
         flex-direction: column;
         width: 100%;
+        align-items: center;
+    }
+
+    .menu button {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
+
+    .container {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .sib-form, .sib-container--large.sib-container--vertical {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
     }
 
     .menu button {
@@ -285,37 +349,50 @@
         margin: 5px 0;
     }
 
-    .menu button:first-child {
-        border-radius: 5px 5px 0 0;
-    }
-
-    .menu button:last-child {
-        border-radius: 0 0 5px 5px;
+    .image img {
+        width: 100%;
+        max-height: none; /* Elimina el límite de altura máxima */
+        height: auto; /* Ajusta la altura automáticamente */
     }
 }
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 601px) {
+    .image img {
+        width: 100%;
+        height: auto; /* Ajusta la altura automáticamente */
+        max-height: 260px; /* Aumenta la altura máxima para pantallas más grandes */
+    }
+}
+
+
+
 
     </style>
 </head>
 <body>
     <div class="container">
+        <!-- Contenido inicial -->
         <div class="initial-content">
-            <h2>Por una Colombia con más educación y menos chirretismo</h2>
+            <h2>Por una Colombia con más educación</h2>
             <div class="image">
                 <img id="section-image" src="./presentacion.jpg" alt="Imagen de sección">
             </div>
             <p>Gurwi es una editorial y una aplicación de aprendizaje que busca enseñarle a los colombianos lo útil e importante para su vida adulta, democratizar el conocimiento y crear una nación más próspera. Contigo podemos lograrlo.</p>
             <div class="menu">
-                <button onclick="showSection('subscribe', './presentacion.jpg')" style="background-color: #ffc107; color: #ffffff; border-radius: 5px 0 0 5px;">Lista de espera</button>
-                <button onclick="showSection('donate', './gurwi.jpg')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107; border-radius: 0 5px 5px 0;">Donar</button>
+                <button onclick="showSection('subscribe', './presentacion.jpg')" style="background-color: #ffc107; color: #ffffff;">Lista de espera</button>
+                <button onclick="showSection('donate', './gurwi.jpg')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107;">Donar</button>
             </div>
         </div>
 
+        <!-- Botón de retroceso -->
         <div class="back-button" onclick="showSection('')">
             <i class="fas fa-arrow-left"></i> Retroceder
         </div>
 
+        <!-- Sección de suscripción -->
         <div id="subscribe" class="section">
-            <h2>Lista de lanzamiento</h2>
+            <h2>Lista de espera</h2>
             <p>Inscríbete y te avisaremos cuando la app esté disponible.</p>
             <!-- Begin Brevo Form -->
             <div class="sib-form" style="text-align: center; background-color: #ffffff;">
@@ -345,19 +422,7 @@
 
                     <div id="sib-container" class="sib-container--large sib-container--vertical" style="text-align:center; background-color:rgba(255,255,255,1); max-width:540px; border-radius:3px; border-width:1px; border-color:#C0CCD9; border-style:solid; direction:ltr">
                         <form id="sib-form" method="POST" action="https://ab21da63.sibforms.com/serve/MUIFAO34eUrevmpYrTPlzduE7Z5bSJqDeu9HSZw0VDNCLqRGulaKeyr44NjpKwhSNYRHvB0ytM-Wb48ejxAGInsh4NN7Cvlu7npnuyXX13mzulc2A9DCNOKkRhdnDXOnsAIiJI1mYqXf23FGqi3MOmB1c5rwartRHRQTBabfbyD-FCO_2mxjjbLAnRlxM29HdCVjDZd-56pIAvAI" data-type="subscription">
-                            <!-- <div style="padding: 8px 0;">
-                                <div class="sib-form-block" style="font-size:30px; text-align:left; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#050505; background-color:transparent; text-align:left">
-                                    <p>Lista de lanzamiento</p>
-                                </div>
-                            </div>
-                            <div style="padding: 8px 0;">
-                                <div class="sib-form-block" style="font-size:16px; text-align:left; font-family:&quot;Helvetica&quot;, sans-serif; color:#3C4858; background-color:transparent; text-align:left">
-                                    <div class="sib-text-form-block">
-                                        <p>Inscríbete y te avisaremos cuando la app esté disponible.</p>
-                                    </div>
-                                </div>
-                            </div> -->
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 0px 0;">
                                 <div class="sib-input sib-form-block">
                                     <div class="form__entry entry_block">
                                         <div class="form__label-row ">
@@ -369,7 +434,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 2px 0;">
                                 <div class="sib-input sib-form-block">
                                     <div class="form__entry entry_block">
                                         <div class="form__label-row ">
@@ -381,7 +446,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 2px 0;">
                                 <div class="sib-sms-field sib-form-block">
                                     <div class="form__entry entry_block">
                                         <div class="form__label-row ">
@@ -409,7 +474,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 2px 0;">
                                 <div class="sib-select sib-form-block" data-required="true">
                                     <div class="form__entry entry_block">
                                         <div class="form__label-row ">
@@ -457,7 +522,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 2px 0;">
                                 <div class="sib-optin sib-form-block">
                                     <div class="form__entry entry_mcq">
                                         <div class="form__label-row ">
@@ -472,17 +537,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div style="padding: 8px 0;">
+                            <div style="padding: 2px 0;">
                                 <div class="g-recaptcha-v3" data-sitekey="6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw" style="display: none"></div>
                             </div>
                             <div style="padding: 8px 0;">
-                                <div class="sib-form-block" style="text-align: center">
-                                    <button class="sib-form-block__button sib-form-block__button-with-loader" style="font-size:20px; text-align:center; font-weight:700; font-family:&quot;Helvetica&quot;, sans-serif; color:#fff8f8; background-color:#f7c325; border-radius:7px; border-width:0px;" form="sib-form" type="submit">
+                                <div class="sib-form-block" id="sib-form-block" style="text-align: center">
+                                    <button class="donate-button" form="sib-form" type="submit">
                                         <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
-                                            <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
+                                            <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z"></path>
                                         </svg>
                                         Unirse a la lista de espera
-                                    </button>
+                                    </button>                                    
                                 </div>
                             </div>
                             <input type="text" name="email_address_check" value="" class="input--hidden">
@@ -494,14 +559,14 @@
             <!-- End Brevo Form -->
         </div>
 
+ 
+
+        <!-- Sección de donación -->
         <div id="donate" class="section">
-            <!-- <div class="image">
-                <img src="./gurwi.jpg" alt="Imagen de sección donación">
-            </div> -->
             <h2>Haz Gurwi posible</h2>
-            <p>Tus aportes son esenciales para lograr el desarrollo de la aplicación que pretende que la transicción de la vida juvenil a la adulta sea menos dolorosa, que los colombianos tengan más control y consciencia sobre los asuntos diarios y que seamos un país educado que comienza a apostar por su desarrollo.</p>
-            <div class="goal"><i class="fas fa-bullseye"></i>Objetivo: $15.000.000 COP</div>
-            <div class="amount"><i class="fas fa-piggy-bank"></i>Recaudado: $0 COP</div>
+            <p>Tus aportes son esenciales para lograr el desarrollo de la aplicación que pretende que la transición de la vida juvenil a la adulta sea menos dolorosa, que los colombianos tengan más control y consciencia sobre los asuntos diarios y que seamos un país educado que le apuesta al desarrollo.</p>
+            <div class="goal"><i class="fas fa-bullseye"></i>Objetivo: $15,000,000 COP</div>
+            <div class="amount"><i class="fas fa-piggy-bank"></i>Recaudado: $2,000 COP</div>
             <p>0 personas han donado</p>
             <div class="progress-container">
                 <div class="progress-bar"></div>
@@ -511,6 +576,7 @@
     </div>
 
     <script>
+        /* Función para mostrar la sección seleccionada y cambiar la imagen */
         function showSection(sectionId, imagePath) {
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
@@ -531,6 +597,7 @@
         }
     </script>
     <script>
+        /* Mensajes de error y traducciones para el formulario */
         window.REQUIRED_CODE_ERROR_MESSAGE = 'Elija un código de país';
         window.LOCALE = 'es';
         window.EMAIL_INVALID_MESSAGE = window.SMS_INVALID_MESSAGE = "La información que ha proporcionado no es válida. Compruebe el formato del campo e inténtelo de nuevo.";
@@ -548,3 +615,4 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
+
