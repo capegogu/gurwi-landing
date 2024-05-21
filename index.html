@@ -7,319 +7,323 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     <style>
-        /* Estilos generales y reset */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            flex-direction: column;
-        }
+/* Estilos generales y reset */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+}
 
-        /* Contenedor principal */
-        .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 450px; /* Mantiene el ancho máximo de 450px */
-            padding: 40px; /* Aumenta el padding para ocupar más espacio */
-            position: relative;
-            text-align: center;
-            margin: 40px auto; /* Centra el contenedor y añade margen vertical */
-        }
+/* Contenedor principal */
+.container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Mantiene el ancho máximo de 450px */
+    padding: 40px; /* Aumenta el padding para ocupar más espacio */
+    position: relative;
+    text-align: center;
+    margin: 40px auto; /* Centra el contenedor y añade margen vertical */
+}
 
-        /* Botón de retroceso */
-        .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            cursor: pointer;
-            color: #ffc107;
-            font-size: 18px;
-            display: none;
-        }
+/* Botón de retroceso */
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    color: #ffc107;
+    font-size: 18px;
+    display: none;
+}
 
-        /* Imagen de la sección */
-        .image {
-            margin-bottom: 20px;
-        }
+/* Imagen de la sección */
+.image {
+    margin-bottom: 20px;
+}
 
-        .image img {
-            width: 100%;
-            max-height: 200px;
-            border-radius: 10px;
-            object-fit: contain;
-        }
+.image img {
+    width: 100%;
+    max-height: 200px;
+    border-radius: 10px;
+    object-fit: contain;
+}
 
-        /* Contenedor de la imagen */
-        .image-container {
-            width: 100%;
-            max-width: 450px; /* El mismo ancho que el contenedor principal */
-            height: auto;
-            margin: 0 auto 20px auto; /* Centrado horizontalmente con margen inferior */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* Contenedor de la imagen */
+.image-container {
+    width: 100%;
+    max-width: 450px; /* El mismo ancho que el contenedor principal */
+    height: auto;
+    margin: 0 auto 20px auto; /* Centrado horizontalmente con margen inferior */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-        .image-container img {
-            width: 100%;
-            height: auto; /* Mantiene la proporción de la imagen */
-            border-radius: 10px; /* Opción de bordes redondeados */
-        }
+.image-container img {
+    width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 10px; /* Opción de bordes redondeados */
+}
 
-        /* Encabezados y párrafos */
-        h2 {
-            font-size: 32px; /* Aumenta el tamaño de la fuente del título */
-            color: #333333;
-            margin-top: 35px;
-            margin-bottom: 15px;
-            text-align: left; /* Alinea el título a la izquierda */
-        }
+/* Encabezados y párrafos */
+h2 {
+    font-size: 32px; /* Aumenta el tamaño de la fuente del título */
+    color: #333333;
+    margin-top: 35px;
+    margin-bottom: 15px;
+    text-align: left; /* Alinea el título a la izquierda */
+}
 
-        p {
-            font-size: 18px; /* Aumenta el tamaño de la fuente de los párrafos */
-            color: #666666;
-            margin: 20px 0; /* Aumenta el margen vertical para más espacio */
-            text-align: justify; /* Justifica el texto de los párrafos */
-        }
+p {
+    font-size: 18px; /* Aumenta el tamaño de la fuente de los párrafos */
+    color: #666666;
+    margin: 20px 0; /* Aumenta el margen vertical para más espacio */
+    text-align: justify; /* Justifica el texto de los párrafos */
+}
 
-        /* Menú de botones */
-        .menu {
-            display: flex;
-            justify-content: space-between;
-            margin: 30px 0; /* Aumenta el margen para más espacio */
-        }
+/* Menú de botones */
+.menu {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0; /* Aumenta el margen para más espacio */
+}
 
-        .menu button {
-            border: none;
-            cursor: pointer;
-            font-size: 20px; /* Aumenta el tamaño de la fuente de los botones */
-            padding: 15px 0; /* Aumenta el padding de los botones */
-            text-transform: uppercase;
-            transition: background-color 0.3s;
-            flex: 1;
-            border-radius: 5px; /* Bordes redondeados */
-            margin: 5px;
-        }
+.menu button {
+    border: none;
+    cursor: pointer;
+    font-size: 20px; /* Aumenta el tamaño de la fuente de los botones */
+    padding: 15px 0; /* Aumenta el padding de los botones */
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    flex: 1;
+    border-radius: 5px; /* Bordes redondeados */
+    margin: 5px;
+}
 
-        .menu button:first-child {
-            background-color: #ffc107;
-            color: #ffffff;
-        }
+.menu button:first-child {
+    background-color: #ffc107;
+    color: #ffffff;
+}
 
-        .menu button:last-child {
-            background-color: #ffffff;
-            color: #ffc107;
-            border: 2px solid #ffc107;
-        }
+.menu button:last-child {
+    background-color: #ffffff;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+}
 
-        .menu button:hover {
-            background-color: #e0a800;
-            color: #ffffff;
-        }
+.menu button:hover {
+    background-color: #e0a800;
+    color: #ffffff;
+}
 
-        /* Objetivo y cantidad recaudada */
-        .goal, .amount {
-            font-size: 18px;
-            color: #333333;
-            font-weight: bold;
-            text-align: left;
-            display: flex;
-            align-items: center;
-        }
+/* Objetivo y cantidad recaudada */
+.goal, .amount {
+    font-size: 18px;
+    color: #333333;
+    font-weight: bold;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
 
-        .goal i, .amount i {
-            color: #ffc107;
-            margin-right: 10px;
-        }
+.goal i, .amount i {
+    color: #ffc107;
+    margin-right: 10px;
+}
 
-        /* Barra de progreso */
-        .progress-container {
-            background-color: #e0e0e0;
-            border-radius: 25px;
-            height: 20px;
-            margin: 20px 0;
-            width: 100%;
-            overflow: hidden;
-        }
+/* Barra de progreso */
+.progress-container {
+    background-color: #e0e0e0;
+    border-radius: 25px;
+    height: 20px;
+    margin: 20px 0;
+    width: 100%;
+    overflow: hidden;
+}
 
-        .progress-bar {
-            background-color: #ffc107;
-            border-radius: 25px;
-            height: 100%;
-            width: 1%; /* Indica que se ha recaudado un 25% del objetivo */
-        }
+.progress-bar {
+    background-color: #ffc107;
+    border-radius: 25px;
+    height: 100%;
+    width: 1%; /* Indica que se ha recaudado un 25% del objetivo */
+}
 
-        /* Botón de donar y enviar */
-        .donate-button, .submit-button {
-            background-color: #ffc107;
-            border: none;
-            border-radius: 25px;
-            color: #ffffff;
-            cursor: pointer;
-            font-size: 18px;
-            padding: 10px 20px;
-            text-transform: uppercase;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
+/* Botón de donar y enviar */
+.donate-button, .submit-button {
+    background-color: #ffc107;
+    border: none;
+    border-radius: 25px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    width: 100%;
+    transition: background-color 0.3s;
+}
 
-        .donate-button:hover, .submit-button:hover {
-            background-color: #e0a800;
-        }
+.donate-button:hover, .submit-button:hover {
+    background-color: #e0a800;
+}
 
-        /* Estilos del formulario */
-        .form-input {
-            margin: 10px 0;
-            width: 100%;
-            padding: 0; /* Elimina el padding */
-        }
+/* Estilos del formulario */
+.form-input {
+    margin: 10px 0;
+    width: 100%;
+    padding: 0; /* Elimina el padding */
+}
 
-        .form-input input, .form-input select {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 10px;
-            width: calc(100% - 22px);
-            font-size: 16px;
-            display: block;
-            margin: 0 auto; /* Elimina el margen */
-        }
+.form-input input, .form-input select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: calc(100% - 22px);
+    font-size: 16px;
+    display: block;
+    margin: 0 auto; /* Elimina el margen */
+}
 
-        .form-input input[type="checkbox"] {
-            width: auto;
-            display: inline-block;
-        }
+.form-input input[type="checkbox"] {
+    width: auto;
+    display: inline-block;
+}
 
-        .form-input label {
-            display: flex;
-            align-items: center;
-            margin: 0; /* Elimina el margen */
-            padding: 0; /* Elimina el padding */
-        }
+.form-input label {
+    display: flex;
+    align-items: center;
+    margin: 0; /* Elimina el margen */
+    padding: 0; /* Elimina el padding */
+}
 
-        /* Ocultar secciones por defecto */
-        .container .section {
-            display: none;
-        }
+/* Ocultar secciones por defecto */
+.container .section {
+    display: none;
+}
 
-        .container .section.active {
-            display: block;
-        }
+.container .section.active {
+    display: block;
+}
 
-        .initial-content {
-            display: block;
-        }
+.initial-content {
+    display: block;
+}
 
-        .initial-content.hidden {
-            display: none;
-        }
+.initial-content.hidden {
+    display: none;
+}
 
-        /* Estilos del formulario de Brevo */
-        #sib-container input:-ms-input-placeholder, #sib-container input::placeholder, #sib-container textarea::placeholder {
-            text-align: left;
-            font-family: "Helvetica", sans-serif;
-            color: #c0ccda;
-        }
+/* Estilos del formulario de Brevo */
+#sib-container input:-ms-input-placeholder, #sib-container input::placeholder, #sib-container textarea::placeholder {
+    text-align: left;
+    font-family: "Helvetica", sans-serif;
+    color: #c0ccda;
+}
 
-        #sib-container a {
-            text-decoration: underline;
-            color: #2BB2FC;
-        }
+#sib-container a {
+    text-decoration: underline;
+    color: #2BB2FC;
+}
 
-        /* Estilos adicionales del formulario */
-        .sib-input input, .sib-input select, .sib-input textarea {
-            border: none !important;
-            box-shadow: none !important;
-        }
+/* Estilos adicionales del formulario */
+.sib-input input, .sib-input select, .sib-input textarea {
+    border: none !important;
+    box-shadow: none !important;
+}
 
-        .sib-container--large.sib-container--vertical {
-            border: none !important;
-        }
+.sib-container--large.sib-container--vertical {
+    border: none !important;
+}
 
-        .sib-form {
-            margin: 0 !important;
-            padding: 0 !important;
-            width: 100% !important;
-        }
+.sib-form {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+}
 
-        .sib-container--large.sib-container--vertical {
-            padding: 0 !important;
-            border: none !important;
-            width: 100%;
-        }
+.sib-container--large.sib-container--vertical {
+    padding: 0 !important;
+    border: none !important;
+    width: 100%;
+}
 
-        #sib-form-block {
-            padding: 0;
-            word-wrap: break-word;
-            outline: none;
-        }
 
-        .sib-form-block {
-            padding: 0;
-            word-wrap: break-word;
-            outline: none;
-        }
+#sib-form-block {
+    padding: 0;
+    word-wrap: break-word;
+    outline: none;
+}
 
-        /* Ajustes para dispositivos móviles */
-        @media (max-width: 600px) {
-            body {
-                margin: 0;
-                padding: 0;
-                height: 100vh;
-                overflow-y: auto;
-            }
 
-            .container {
-                width: 100%;
-                padding: 5px 10px; /* Añade 5px de padding */
-                box-sizing: border-box;
-                margin: 0 auto;
-                height: auto;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
+.sib-form-block {
+    padding: 0;
+    word-wrap: break-word;
+    outline: none;
+}
 
-            .sib-form, .sib-container--large.sib-container--vertical {
-                width: 100% !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
 
-            .menu {
-                display: flex;
-                flex-direction: column;
-                width: 100%;
-                align-items: center;
-            }
+/* Ajustes para dispositivos móviles */
+@media (max-width: 600px) {
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        overflow-y: auto;
+    }
 
-            .menu button {
-                width: 100%;
-                margin: 5px 0;
-            }
+    .container {
+        width: 100%;
+        padding: 5px 10px; /* Añade 5px de padding */
+        box-sizing: border-box;
+        margin: 0 auto;
+        height: auto;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-            .image img {
-                width: 100%;
-                max-height: none; /* Elimina el límite de altura máxima */
-                height: auto; /* Ajusta la altura automáticamente */
-            }
-        }
+    .sib-form, .sib-container--large.sib-container--vertical {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
-        /* Ajustes para pantallas más grandes */
-        @media (min-width: 601px) {
-            .image img {
-                width: 100%;
-                height: auto; /* Ajusta la altura automáticamente */
-                max-height: 300px; /* Aumenta la altura máxima para pantallas más grandes */
-            }
-        }
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .menu button {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .image img {
+        width: 100%;
+        max-height: none; /* Elimina el límite de altura máxima */
+        height: auto; /* Ajusta la altura automáticamente */
+    }
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 601px) {
+    .image img {
+        width: 100%;
+        height: auto; /* Ajusta la altura automáticamente */
+        max-height: 300px; /* Aumenta la altura máxima para pantallas más grandes */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -490,7 +494,7 @@
                                 </div>
                             </div>
                             <div style="padding: 2px 0;">
-                                <div class="g-recaptcha" data-sitekey="6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw" id="recaptcha"></div>
+                                <div class="g-recaptcha-v3" data-sitekey="6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw" style="display: none" id="recaptcha"></div>
                             </div>
                             <div style="padding: 8px 0;">
                                 <div class="sib-form-block" id="sib-form-block" style="text-align: center">
@@ -510,6 +514,8 @@
             </div>
             <!-- End Brevo Form -->
         </div>
+
+ 
 
         <!-- Sección de donación -->
         <div id="donate" class="section">
@@ -540,9 +546,6 @@
                     document.querySelector('#donate .image img').src = imagePath;
                 }
                 if (sectionId === 'subscribe') {
-                    grecaptcha.render('recaptcha', {
-                        'sitekey' : '6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw'
-                    });
                     document.getElementById('recaptcha').style.display = 'block';
                 } else {
                     document.getElementById('recaptcha').style.display = 'none';
@@ -571,7 +574,6 @@
         var AUTOHIDE = Boolean(0);
     </script>
     <script defer src="https://sibforms.com/forms/end-form/build/main.js"></script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
-
