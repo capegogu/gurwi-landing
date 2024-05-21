@@ -527,7 +527,7 @@ p {
             <h2>Haz Gurwi posible</h2>
             <p>Tus aportes son esenciales para lograr el desarrollo de la aplicación que pretende que la transición de la vida juvenil a la adulta sea menos dolorosa, que los colombianos tengan más control y consciencia sobre los asuntos diarios y que seamos un país educado que comienza a apostar por su desarrollo.</p>
             <div class="goal"><i class="fas fa-bullseye"></i>Objetivo: $15,000,000 COP</div>
-            <div class="amount"><i class="fas fa-piggy-bank"></i>Recaudado: $4,000 COP</div>
+            <div class="amount"><i class="fas fa-piggy-bank"></i>Recaudado: $2,000 COP</div>
             <p>0 personas han donado</p>
             <div class="progress-container">
                 <div class="progress-bar"></div>
@@ -547,32 +547,40 @@ p {
     <script>
         /* Función para mostrar la sección seleccionada y cambiar la imagen */
         function showSection(sectionId, imagePath) {
-            document.querySelectorAll('.section').forEach(section => {
-                section.classList.remove('active');
-            });
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
 
-            if (sectionId) {
-                document.getElementById(sectionId).classList.add('active');
-                document.querySelector('.initial-content').classList.add('hidden');
-                document.querySelector('.back-button').style.display = 'block';
-                if (sectionId === 'donate') {
-                    document.querySelector('#donate .image img').src = imagePath;
-                }
-                if (sectionId === 'subscribe') {
-                    document.getElementById('recaptcha').style.display = 'block';
-                    document.querySelector('.grecaptcha-badge').classList.remove('hidden');
-                } else {
-                    document.getElementById('recaptcha').style.display = 'none';
-                    document.querySelector('.grecaptcha-badge').classList.add('hidden');
-                }
-            } else {
-                document.querySelector('.initial-content').classList.remove('hidden');
-                document.querySelector('.back-button').style.display = 'none';
-                document.getElementById('section-image').src = './presentacion.jpg';
-                document.getElementById('recaptcha').style.display = 'none';
-                document.querySelector('.grecaptcha-badge').classList.add('hidden');
-            }
+    if (sectionId) {
+        document.getElementById(sectionId).classList.add('active');
+        document.querySelector('.initial-content').classList.add('hidden');
+        document.querySelector('.back-button').style.display = 'block';
+        if (sectionId === 'donate') {
+            document.querySelector('#donate .image img').src = imagePath;
         }
+        if (sectionId === 'subscribe') {
+            document.getElementById('recaptcha').style.display = 'block';
+            // Re-renderizar el captcha cuando se muestra la sección
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw', { action: 'subscribe' }).then(function(token) {
+                    document.getElementById('g-recaptcha-response').value = token;
+                });
+            });
+            document.querySelector('.grecaptcha-badge').classList.remove('hidden');
+        } else {
+            document.getElementById('recaptcha').style.display = 'none';
+            document.querySelector('.grecaptcha-badge').classList.add('hidden');
+        }
+    } else {
+        document.querySelector('.initial-content').classList.remove('hidden');
+        document.querySelector('.back-button').style.display = 'none';
+        document.getElementById('section-image').src = './presentacion.jpg';
+        document.getElementById('recaptcha').style.display = 'none';
+        document.querySelector('.grecaptcha-badge').classList.add('hidden');
+    }
+}
+
+
     </script>
     <script>
         /* Mensajes de error y traducciones para el formulario */
@@ -593,4 +601,5 @@ p {
     <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
+
 
