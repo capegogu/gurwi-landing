@@ -340,8 +340,8 @@
             </div>
             <p>Gurwi es una editorial y una aplicación de aprendizaje que busca enseñarle a los colombianos lo útil e importante para su vida adulta, democratizar el conocimiento y crear una nación más próspera. Contigo podemos lograrlo.</p>
             <div class="menu">
-                <button onclick="showSection('subscribe', './presentacion.jpg')" style="background-color: #ffc107; color: #ffffff;">Lista de espera</button>
-                <button onclick="showSection('donate', './gurwi.jpg')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107;">Donaciones</button>
+                <button onclick="showSection('subscribe', './presentacion.jpg', '/subscribe')" style="background-color: #ffc107; color: #ffffff;">Lista de espera</button>
+                <button onclick="showSection('donate', './gurwi.jpg', '/donate')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107;">Donaciones</button>
             </div>
         </div>
 
@@ -537,7 +537,7 @@
 
     <script>
         /* Función para mostrar la sección seleccionada y cambiar la imagen */
-        function showSection(sectionId, imagePath) {
+        function showSection(sectionId, imagePath, urlPath) {
             document.querySelectorAll('.section').forEach(section => {
                 section.classList.remove('active');
             });
@@ -556,13 +556,29 @@
                     document.getElementById('recaptcha').style.display = 'none';
                     document.querySelector('.grecaptcha-badge').classList.add('hidden-recaptcha');
                 }
+                history.pushState({section: sectionId}, '', urlPath);
             } else {
                 document.querySelector('.initial-content').classList.remove('hidden');
                 document.querySelector('.back-button').style.display = 'none';
                 document.getElementById('section-image').src = './presentacion.jpg';
                 document.getElementById('recaptcha').style.display = 'none';
                 document.querySelector('.grecaptcha-badge').classList.add('hidden-recaptcha');
+                history.pushState({section: ''}, '', '/');
             }
+        }
+
+        /* Maneja el evento de popstate para navegación hacia atrás */
+        window.addEventListener('popstate', function(event) {
+            if (event.state) {
+                showSection(event.state.section, './presentacion.jpg', window.location.pathname);
+            } else {
+                showSection('', './presentacion.jpg', '/');
+            }
+        });
+
+        /* Inicializa la URL y el estado */
+        if (!window.location.pathname.includes('subscribe') && !window.location.pathname.includes('donate')) {
+            history.replaceState({section: ''}, '', '/');
         }
     </script>
     <script>
@@ -584,4 +600,5 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
+
 
