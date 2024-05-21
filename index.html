@@ -253,13 +253,11 @@
             width: 100%;
         }
 
-
         #sib-form-block {
             padding: 0;
             word-wrap: break-word;
             outline: none;
         }
-
 
         .sib-form-block {
             padding: 0;
@@ -340,13 +338,13 @@
             </div>
             <p>Gurwi es una editorial y una aplicación de aprendizaje que busca enseñarle a los colombianos lo útil e importante para su vida adulta, democratizar el conocimiento y crear una nación más próspera. Contigo podemos lograrlo.</p>
             <div class="menu">
-                <button onclick="showSection('subscribe', './presentacion.jpg', '/subscribe')" style="background-color: #ffc107; color: #ffffff;">Lista de espera</button>
-                <button onclick="showSection('donate', './gurwi.jpg', '/donate')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107;">Donaciones</button>
+                <button onclick="showSection('subscribe', './subscribe.jpg', '/subscribe')" style="background-color: #ffc107; color: #ffffff;">Lista de espera</button>
+                <button onclick="showSection('donate', './donate.jpg', '/donate')" style="background-color: #ffffff; color: #ffc107; border: 2px solid #ffc107;">Donaciones</button>
             </div>
         </div>
 
         <!-- Botón de retroceso -->
-        <div class="back-button" onclick="showSection('')">
+        <div class="back-button" onclick="showSection('', './presentacion.jpg', '/')">
             <i class="fas fa-arrow-left"></i> Retroceder
         </div>
 
@@ -519,8 +517,6 @@
             <!-- End Brevo Form -->
         </div>
 
- 
-
         <!-- Sección de donación -->
         <div id="donate" class="section">
             <h2>Haz Gurwi posible</h2>
@@ -546,9 +542,7 @@
                 document.getElementById(sectionId).classList.add('active');
                 document.querySelector('.initial-content').classList.add('hidden');
                 document.querySelector('.back-button').style.display = 'block';
-                if (sectionId === 'donate') {
-                    document.querySelector('#donate .image img').src = imagePath;
-                }
+                document.getElementById('section-image').src = imagePath;
                 if (sectionId === 'subscribe') {
                     document.getElementById('recaptcha').style.display = 'block';
                     document.querySelector('.grecaptcha-badge').classList.remove('hidden-recaptcha');
@@ -570,7 +564,13 @@
         /* Maneja el evento de popstate para navegación hacia atrás */
         window.addEventListener('popstate', function(event) {
             if (event.state) {
-                showSection(event.state.section, './presentacion.jpg', window.location.pathname);
+                if (event.state.section === 'subscribe') {
+                    showSection(event.state.section, './subscribe.jpg', '/subscribe');
+                } else if (event.state.section === 'donate') {
+                    showSection(event.state.section, './donate.jpg', '/donate');
+                } else {
+                    showSection('', './presentacion.jpg', '/');
+                }
             } else {
                 showSection('', './presentacion.jpg', '/');
             }
@@ -579,6 +579,10 @@
         /* Inicializa la URL y el estado */
         if (!window.location.pathname.includes('subscribe') && !window.location.pathname.includes('donate')) {
             history.replaceState({section: ''}, '', '/');
+        } else if (window.location.pathname.includes('subscribe')) {
+            showSection('subscribe', './subscribe.jpg', '/subscribe');
+        } else if (window.location.pathname.includes('donate')) {
+            showSection('donate', './donate.jpg', '/donate');
         }
     </script>
     <script>
@@ -600,5 +604,4 @@
     <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
-
 
