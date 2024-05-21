@@ -19,11 +19,6 @@ body {
     flex-direction: column;
 }
 
-/* Clase para ocultar elementos */
-.hidden {
-    display: none;
-}
-
 /* Contenedor principal */
 .container {
     background-color: #ffffff;
@@ -536,51 +531,32 @@ p {
         </div>
     </div>
 
-    <div class="grecaptcha-badge hidden" data-style="bottomright" style="width: 256px; height: 60px; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px; border-radius: 2px; overflow: hidden;">
-        <div class="grecaptcha-logo">
-            <iframe title="reCAPTCHA" width="256" height="60" role="presentation" name="a-eqw3v54yx1uk" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&amp;co=aHR0cDovLzEyNy4wLjAuMTo5MDAw&amp;hl=es&amp;v=8k85QBI-qzxmenDv318AZH30&amp;size=invisible&amp;cb=cqjmcf4udyzp"></iframe>
-        </div>
-        <div class="grecaptcha-error"></div>
-        <textarea id="g-recaptcha-response-100000" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
-    </div>
-
     <script>
         /* Función para mostrar la sección seleccionada y cambiar la imagen */
         function showSection(sectionId, imagePath) {
-    document.querySelectorAll('.section').forEach(section => {
-        section.classList.remove('active');
-    });
-
-    if (sectionId) {
-        document.getElementById(sectionId).classList.add('active');
-        document.querySelector('.initial-content').classList.add('hidden');
-        document.querySelector('.back-button').style.display = 'block';
-        if (sectionId === 'donate') {
-            document.querySelector('#donate .image img').src = imagePath;
-        }
-        if (sectionId === 'subscribe') {
-            document.getElementById('recaptcha').style.display = 'block';
-            // Re-renderizar el captcha cuando se muestra la sección
-            grecaptcha.ready(function() {
-                grecaptcha.execute('6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw', { action: 'subscribe' }).then(function(token) {
-                    document.getElementById('g-recaptcha-response').value = token;
-                });
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
             });
-            document.querySelector('.grecaptcha-badge').classList.remove('hidden');
-        } else {
-            document.getElementById('recaptcha').style.display = 'none';
-            document.querySelector('.grecaptcha-badge').classList.add('hidden');
+
+            if (sectionId) {
+                document.getElementById(sectionId).classList.add('active');
+                document.querySelector('.initial-content').classList.add('hidden');
+                document.querySelector('.back-button').style.display = 'block';
+                if (sectionId === 'donate') {
+                    document.querySelector('#donate .image img').src = imagePath;
+                }
+                if (sectionId === 'subscribe') {
+                    document.getElementById('recaptcha').style.display = 'block';
+                } else {
+                    document.getElementById('recaptcha').style.display = 'none';
+                }
+            } else {
+                document.querySelector('.initial-content').classList.remove('hidden');
+                document.querySelector('.back-button').style.display = 'none';
+                document.getElementById('section-image').src = './presentacion.jpg';
+                document.getElementById('recaptcha').style.display = 'none';
+            }
         }
-    } else {
-        document.querySelector('.initial-content').classList.remove('hidden');
-        document.querySelector('.back-button').style.display = 'none';
-        document.getElementById('section-image').src = './presentacion.jpg';
-        document.getElementById('recaptcha').style.display = 'none';
-        document.querySelector('.grecaptcha-badge').classList.add('hidden');
-    }
-}
-
-
     </script>
     <script>
         /* Mensajes de error y traducciones para el formulario */
@@ -601,5 +577,4 @@ p {
     <script src="https://www.google.com/recaptcha/api.js?render=6LehVtkpAAAAAJgzTTIs4NVZ8LzV-_60e59UuzOw&hl=es" async defer></script>
 </body>
 </html>
-
 
