@@ -18,6 +18,7 @@
             padding: 20px;
             flex-direction: column;
             height: auto;
+            overflow-x: hidden; /* Evita el desplazamiento horizontal */
         }
 
         .container {
@@ -32,11 +33,19 @@
             margin: 20px auto;
         }
 
+        h2, h3 {
+            color: #333333;
+            margin-bottom: 15px;
+        }
+
         h2 {
             font-size: 32px;
-            color: #333333;
             margin-top: 35px;
-            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-top: 25px;
         }
 
         p {
@@ -46,15 +55,10 @@
             text-align: justify;
         }
 
-        h3 {
-            font-size: 24px;
-            color: #333333;
-            margin-top: 25px;
-        }
-
         ul {
             list-style-type: disc;
-            margin-left: 20px;
+            margin-left: 40px;
+            padding-left: 20px;
         }
 
         li {
@@ -72,54 +76,37 @@
             font-size: 18px;
         }
 
-        a {
-            color: #ffc107;
-            text-decoration: none;
-            transition: color 0.3s;
-            }
-
-        a:hover {
-            color: #e0a800;
-            text-decoration: underline;
-        }
-
-
         @media (max-width: 600px) {
-            body {
-                margin: 0;
-                padding: 0;
-                height: auto;
-                overflow-y: auto;
-            }
-
             .container {
-                width: 100%;
                 padding: 20px;
+                padding-top: 60px; /* Añade espacio adicional arriba para el botón "Retroceder" */
                 box-sizing: border-box;
-                margin: 0 auto;
-                height: auto;
-                min-height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: center;
             }
 
             h2 {
                 font-size: 28px;
+                margin-top: 20px;
             }
 
             h3 {
                 font-size: 22px;
+                margin-top: 15px;
             }
 
             p, li {
                 font-size: 16px;
+                margin: 10px 0;
+            }
+
+            ul {
+                margin-left: 20px;
+                padding-left: 20px;
+            }
+
+            .back-button {
+                top: 10px; /* Ajusta la posición del botón "Retroceder" */
             }
         }
-
-
-
     </style>
 </head>
 <body>
@@ -171,3 +158,4 @@
     </div>
 </body>
 </html>
+
