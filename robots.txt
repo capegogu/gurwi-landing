@@ -1,0 +1,8 @@
+# Bloquear todos los rastreadores de acceder a partes específicas del sitio
+User-agent: *
+Disallow: /404/
+Disallow: /privacidad/
+
+# Permitir acceso a todo lo demás
+User-agent: *
+Allow: /
